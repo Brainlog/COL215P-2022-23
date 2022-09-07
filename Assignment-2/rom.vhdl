@@ -13,12 +13,12 @@ end rom;
 
 architecture beh of rom is
 
-Type list is array(15000 downto 0) of std_logic_vector(7 downto 0);
+Type list is array(150000 downto 0) of std_logic_vector(7 downto 0);
 signal mem : list := ( 0 => "00000010", 1 => "00000011", 2 => "00000111", 
 others => "00000000"
 );
 
-signal index : integer range 0 to 15000;
+signal index : integer range 0 to 150000;
 begin 
 process(clk, re, address_rom)
 	begin
