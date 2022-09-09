@@ -1,16 +1,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
+use work.data.all;
 
 entity mac is
-  port (din1,din2: in std_logic_vector(7 downto 0);
+  port (din1,din2: in std_logic_vector(data_width-1 downto 0);
         clk: in std_logic;
         cntrl : in std_logic;
-        dout: out std_logic_vector(7 downto 0));
+        dout: out std_logic_vector(data_width-1 downto 0));
 end mac;
 
 architecture mc of mac is
-  signal res : std_logic_vector(15 downto 0) := "0000000000000000";
+  signal res : std_logic_vector(data_width*2-1 downto 0) := ( others => '0' );
 begin
   process(clk)
   begin
@@ -22,5 +23,5 @@ begin
       end if;
     end if;
   end process ; 
-  dout <= res(7 downto 0);
+  dout <= res(data_width-1 downto 0);
 end;   
